@@ -1,0 +1,20 @@
+---
+
+# Delegate further configuration to subtasks
+# placed in this same directory.
+
+- include: install.yml
+- include: configure.yml
+
+# Flush handlers now, so we avoid starting the process and then
+# restarting it immediately after notifications are flushed.
+- meta: flush_handlers
+
+- name: Ensure RethinkDB is running
+  sudo: yes
+  service:
+    name: "{{rethinkdb_service_name}}"
+    state: running
+  tags:
+    - init
+    - rethinkdb

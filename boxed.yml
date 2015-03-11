@@ -1,0 +1,14 @@
+---
+
+# Simple, straight playbook for boxed RethinkDB installs
+
+- name: 'RethinkDB boxed installation'
+
+  hosts: boxed
+
+  vars:
+    rethinkdb_bind: all
+
+  roles:
+    - '.'    # This role itself
+

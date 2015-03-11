@@ -1,0 +1,40 @@
+---
+
+# Targeting specific OSes or distributions:
+#
+#   - `ansible_system`               → Linux, BSD, ...
+#   - `ansible_os_family`            → Debian, RedHat, ...
+#   - `ansible_distribution`         → Debian, Ubuntu, RedHat, ...
+#   - `ansible_distribution_release` → precise, wheezy, ...
+#   - `ansible_pkg_mgr`              → apt, yum, ...
+
+- name: Create RethinkDB directories
+  sudo: yes
+  file:
+    dest: "{{item}}"
+    state: directory
+    recurse: yes
+    owner: "{{rethinkdb_user}}"
+    group: "{{rethinkdb_group}}"
+  with_items:
+    - "{{rethinkdb_conf_dir}}"
+    - "{{rethinkdb_instances_dir}}"
+    - "{{rethinkdb_run_dir}}"
+    - "{{rethinkdb_lib_dir}}"
+    - "{{rethinkdb_data_dir}}"
+    - "{{rethinkdb_log_dir}}"
+  tags:
+    - conf
+    - rethinkdb
+
+- name: Configure RethinkDB
+  sudo: yes
+  template:
+    src: instance.conf
+    dest: "{{rethinkdb_instances_dir}}/{{rethinkdb_instance_name}}.conf"
+    owner: "{{rethinkdb_user}}"
+    group: "{{rethinkdb_group}}"
+  notify: restart rethinkdb
+  tags:
+    - conf
+    - rethinkdb
