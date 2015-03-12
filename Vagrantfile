@@ -4,11 +4,11 @@
 Vagrant.configure '2' do |config|
 
 
-# RethinkDB standalone box
-# -------------------------
+# Standalone box
+# --------------
 
 	# Provision this machine to obtain a standalone box
-	# with a RethinkDB inside listening on the default port.
+	# listening on the default ports.
 
 	config.vm.define 'boxed' do |box|
 		box.vm.box = "ubuntu/trusty64"
