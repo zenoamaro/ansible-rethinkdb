@@ -43,7 +43,7 @@ You can also use the role as a playbook. You will be asked which hosts to provis
 
     $ ansible-playbook -i inventory --extra-vars='{...}' main.yml
 
-To provision a standalone box, start the `boxed` VM, which is a Ubuntu 14.04 box. After that, you can login to the admin interface on the host (on `18083` by default) as user `root` and password `root`. You will similarly find the API available (on `18086` by default) with the same credentials.
+To provision a standalone box, start the `boxed` VM, which is a Ubuntu 14.04 box. After that, you can login to the admin interface on port `8080` of address `192.168.33.20` in the private network. You will also be able to access cluster management and api on ports `29015` and `28015` respectively. Please note that RethinkDB comes without any authentication.
 
     $ vagrant up boxed
 
@@ -65,6 +65,34 @@ Still to do
 
 Changelog
 ---------
+### 0.1.1
+- The package list is not being updated in playbooks anymore.
+- Updated inventory to use the new Vagrant private keys.
+
 ### 0.1.0
 Initial version.
 
+
+License
+-------
+The MIT License (MIT)
+
+Copyright (c) 2015, zenoamaro <zenoamaro@gmail.com>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.

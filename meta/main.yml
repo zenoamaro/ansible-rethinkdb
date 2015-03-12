@@ -3,7 +3,7 @@
 galaxy_info:
   author: zenoamaro
   description: A role to install and configure RethinkDB.
-  version: 0.1.0
+  version: 0.1.1
   license: MIT
   min_ansible_version: 1.6
 
