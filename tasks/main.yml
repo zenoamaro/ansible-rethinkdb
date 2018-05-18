@@ -14,7 +14,7 @@
   become: yes
   service:
     name: "{{rethinkdb_service_name}}"
-    state: running
+    state: started
   tags:
     - init
     - rethinkdb
