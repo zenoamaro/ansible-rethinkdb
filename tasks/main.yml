@@ -11,10 +11,10 @@
 - meta: flush_handlers
 
 - name: Ensure RethinkDB is running
-  sudo: yes
+  become: yes
   service:
     name: "{{rethinkdb_service_name}}"
-    state: running
+    state: started
   tags:
     - init
     - rethinkdb

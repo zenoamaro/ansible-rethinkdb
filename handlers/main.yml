@@ -1,9 +1,9 @@
 ---
 
 - name: reload rethinkdb
-  sudo: yes
+  become: yes
   service: name=rethinkdb state=reloaded
 
 - name: restart rethinkdb
-  sudo: yes
+  become: yes
   service: name=rethinkdb state=restarted

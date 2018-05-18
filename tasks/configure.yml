@@ -9,7 +9,7 @@
 #   - `ansible_pkg_mgr`              → apt, yum, ...
 
 - name: Create RethinkDB directories
-  sudo: yes
+  become: yes
   file:
     dest: "{{item}}"
     state: directory
@@ -28,7 +28,7 @@
     - rethinkdb
 
 - name: Configure RethinkDB
-  sudo: yes
+  become: yes
   template:
     src: instance.conf
     dest: "{{rethinkdb_instances_dir}}/{{rethinkdb_instance_name}}.conf"
