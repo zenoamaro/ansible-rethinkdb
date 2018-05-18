@@ -13,23 +13,23 @@
 # Debian
 # ------
 
-- name: Add official APT repository
-  when: ansible_os_family == 'Debian'
-  become: yes
-  register: _repo
-  apt_repository:
-    repo: "deb http://download.rethinkdb.com/apt {{ansible_distribution_release}} main"
-  tags:
-    - deps
-    - db
-    - rethinkdb
-
 - name: Adding APT repository key
   when: ansible_os_family == 'Debian'
   become: yes
   register: _repo_key
   apt_key:
     url: http://download.rethinkdb.com/apt/pubkey.gpg
+  tags:
+    - deps
+    - db
+    - rethinkdb
+
+- name: Add official APT repository
+  when: ansible_os_family == 'Debian'
+  become: yes
+  register: _repo
+  apt_repository:
+    repo: "deb http://download.rethinkdb.com/apt {{ansible_distribution_release}} main"
   tags:
     - deps
     - db
